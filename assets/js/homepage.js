@@ -49,7 +49,7 @@ var getUserRepos = function (user) {
           var lat = data.coord.lat;
           var lon = data.coord.lon;
 
-          var oneCallUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&exclude=hourly,daily&appid=0220452a1991091b9684145e5369c7ac'
+          var oneCallUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&appid=0220452a1991091b9684145e5369c7ac'
 
           fetch(oneCallUrl)
             .then(function (response) {
@@ -57,9 +57,50 @@ var getUserRepos = function (user) {
                 console.log(response);
                 response.json().then(function (data) {
                   console.log(data);
+
+                  console.log(data.daily)
+
+                  var lastCityWeather = {
+
+                    cityName: user,
+                    temp: data.current.temp,
+                    wind: data.current.wind_speed,
+                    humidity: data.current.humidity,
+                    uvIdnex: data.current.uvi,
+                    dayOneTemp: data.daily[0].temp.day,
+                    dayOneWind: data.daily[0].wind_speed,
+                    dayOneHumidity: data.daily[0].humidity,
+                    dayTwoTemp: data.daily[1].temp.day,
+                    dayTwoWind: data.daily[1].wind_speed,
+                    dyaTwoHumidity: data.daily[1].humidity,
+                    dayThreeTemp: data.daily[2].temp.day,
+                    dayThreeWind: data.daily[2].wind_speed,
+                    dyaThreeHumidity: data.daily[2].humidity,
+                    dayFourTemp: data.daily[3].temp.day,
+                    dayFourWind: data.daily[3].wind_speed,
+                    dyaFourHumidity: data.daily[3].humidity,
+                    dayFiveTemp: data.daily[4].temp.day,
+                    dayFiveWind: data.daily[4].wind_speed,
+                    dayFiveHumidity: data.daily[4].humidity
+
+
+
+
+                  }
+
+                  console.log(lastCityWeather.dayFiveHumidity)
+
+                  console.log(lastCityWeather.temp)
+
                   displayRepos(data, user);
                   console.log("did it work")
                   // grab and use the data here
+              
+
+                  localStorage.setItem("lastCityWeather", JSON.stringify(lastCityWeather));
+
+                  
+
 
                 })
               }
@@ -75,6 +116,42 @@ var getUserRepos = function (user) {
       alert('Unable to connect to GitHub');
     });
 };
+
+// get item out of storgae
+
+function renderLastWeather() {
+
+  var lastWeather = JSON.parse(localStorage.getItem("lastCityWeather"));
+
+  if(lastWeather !== null) {
+
+    document.getElementById("city-name").innerHTML = lastCityWeather.cityName;
+    document.getElementById("city-temp").innerHTML = lastCityWeather.temp;
+    document.getElementById("city-wind").innerHTML = lastCityWeather.wind;
+    document.getElementById("city-humidity").innerHTML = lastCityWeather.humidity;
+    document.getElementById("city-uvIndex").innerHTML = lastCityWeather.uvIdnex;
+    document.getElementById("city-one-temp").innerHTML = lastCityWeather.dayOneTemp;
+    document.getElementById("city-one-wind").innerHTML = lastCityWeather.dayOneWind;
+    document.getElementById("city-one-humidity").innerHTML = lastCityWeather.dayOneHumidity;
+    document.getElementById("city-two-temp").innerHTML = lastCityWeather.dayTwoTemp;
+    document.getElementById("city-two-wind").innerHTML = lastCityWeather.dayTwoWind;
+    document.getElementById("city-two-humidity").innerHTML = lastCityWeather.dayTwoHumidity;
+    document.getElementById("city-three-temp").innerHTML = lastCityWeather.dayThreeTemp;
+    document.getElementById("city-three-wind").innerHTML = lastCityWeather.dayThreeWind;
+    document.getElementById("city-three-humidity").innerHTML = lastCityWeather.dayThreeHumidity;
+    document.getElementById("city-four-temp").innerHTML = lastCityWeather.dayFourTemp;
+    document.getElementById("city-four-wind").innerHTML = lastCityWeather.dayFourWind;
+    document.getElementById("city-four-humidity").innerHTML = lastCityWeather.dayFourHumidity;
+    document.getElementById("city-five-temp").innerHTML = lastCityWeather.dayFiveTemp;
+    document.getElementById("city-five-wind").innerHTML = lastCityWeather.dayFiveWind;
+    document.getElementById("city-five-humidity").innerHTML = lastCityWeather.dayFiveHumidity;
+
+
+  } else {
+    return;
+  }
+}
+
 
 
 
