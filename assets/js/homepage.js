@@ -5,6 +5,36 @@ var repoContainerEl = document.querySelector('#repos-container');
 var repoSearchTerm = document.querySelector('#repo-search-term');
 var refreshButton = document.querySelector('#refresh');
 
+/* ----------------------- SVGAnimateMotionElement.js ----------------------- */
+ // Use Moment.js to display time
+
+
+ window.setInterval(function () {
+  var today = moment();
+  $("#date").text(today.format("dddd, MMMM Do YYYY"));
+  var new_date_one = moment(today, "DD-MM-YYYY").add(1, 'days');
+
+  $("#date-day1").text(new_date_one.format("dddd, MMMM Do YYYY"));
+
+  var new_date_two = moment(today, "DD-MM-YYYY").add(2, 'days');
+
+  $("#date-day2").text(new_date_two.format("dddd, MMMM Do YYYY"));
+
+  var new_date_three = moment(today, "DD-MM-YYYY").add(3, 'days');
+  
+  $("#date-day3").text(new_date_three.format("dddd, MMMM Do YYYY"));
+
+  var new_date_four = moment(today, "DD-MM-YYYY").add(4, 'days');
+  
+  $("#date-day4").text(new_date_four.format("dddd, MMMM Do YYYY"));
+
+  var new_date_five = moment(today, "DD-MM-YYYY").add(5, 'days');
+  
+  $("#date-day5").text(new_date_five.format("dddd, MMMM Do YYYY"));
+  
+  }, 1000);
+  /* -------------------------------------------------------------------------- */
+
 
 var formSubmitHandler = function (event) {
   event.preventDefault();
