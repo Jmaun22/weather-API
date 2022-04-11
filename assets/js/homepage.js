@@ -3,6 +3,8 @@ var languageButtonsEl = document.querySelector('#language-buttons');
 var nameInputEl = document.querySelector('#username');
 var repoContainerEl = document.querySelector('#repos-container');
 var repoSearchTerm = document.querySelector('#repo-search-term');
+var refreshButton = document.querySelector('#refresh');
+
 
 var formSubmitHandler = function (event) {
   event.preventDefault();
@@ -60,7 +62,7 @@ var getUserRepos = function (user) {
 
                   console.log(data.daily)
 
-                  var lastCityWeather = {
+                  var lastWeather = {
 
                     cityName: user,
                     temp: data.current.temp,
@@ -88,16 +90,52 @@ var getUserRepos = function (user) {
 
                   }
 
-                  console.log(lastCityWeather.dayFiveHumidity)
+             
 
-                  console.log(lastCityWeather.temp)
+                
 
                   displayRepos(data, user);
                   console.log("did it work")
                   // grab and use the data here
               
 
-                  localStorage.setItem("lastCityWeather", JSON.stringify(lastCityWeather));
+                  localStorage.setItem("lastCityWeather", JSON.stringify(lastWeather));
+                  // 
+                  var lastWeather = JSON.parse(localStorage.getItem("lastCityWeather"));
+
+
+                  console.log(lastWeather)
+                  console.log(lastWeather.temp)
+                  console.log(lastWeather.humidity)
+                  
+
+                  // putting the values on the page
+
+                  // document.getElementById("city-name").innerHTML = lastWeather.cityName;
+                  document.getElementById("city-temp").innerHTML = lastWeather.temp;
+                  document.getElementById("city-wind").innerHTML = lastWeather.wind;
+                  document.getElementById("city-humidity").innerHTML = lastWeather.humidity;
+                  document.getElementById("city-uvIndex").innerHTML = lastWeather.uvIdnex;
+                  document.getElementById("city-one-temp").innerHTML = lastWeather.dayOneTemp;
+                  document.getElementById("city-one-wind").innerHTML = lastWeather.dayOneWind;
+                  document.getElementById("city-one-humidity").innerHTML = lastWeather.dayOneHumidity;
+                  document.getElementById("city-two-temp").innerHTML = lastWeather.dayTwoTemp;
+                  // document.getElementById("city-two-wind").innerHTML = lastWeather.dayTwoWind;
+                  // document.getElementById("city-two-humidity").innerHTML = lastWeather.dayTwoHumidity;
+                  document.getElementById("city-three-temp").innerHTML = lastWeather.dayThreeTemp;
+                  document.getElementById("city-three-wind").innerHTML = lastWeather.dayThreeWind;
+                  // document.getElementById("city-three-humidity").innerHTML = lastWeather.dayThreeHumidity;
+                  document.getElementById("city-four-temp").innerHTML = lastWeather.dayFourTemp;
+                  document.getElementById("city-four-wind").innerHTML = lastWeather.dayFourWind;
+                  // document.getElementById("city-four-humidity").innerHTML = lastWeather.dayFourHumidity;
+                  document.getElementById("city-five-temp").innerHTML = lastWeather.dayFiveTemp;
+                  document.getElementById("city-five-wind").innerHTML = lastWeather.dayFiveWind;
+                  document.getElementById("city-five-humidity").innerHTML = lastWeather.dayFiveHumidity;
+
+                 
+                 
+
+                 
 
                   
 
@@ -118,33 +156,42 @@ var getUserRepos = function (user) {
 };
 
 // get item out of storgae
+languageButtonsEl.addEventListener('click', buttonClickHandler);
+refreshButton.addEventListener('click', renderLastWeather)
+document.getElementById("city-temp").innerHTML = "just work please";
+
+
+
 
 function renderLastWeather() {
 
   var lastWeather = JSON.parse(localStorage.getItem("lastCityWeather"));
 
+  console.log(lastWeather)
   if(lastWeather !== null) {
 
-    document.getElementById("city-name").innerHTML = lastCityWeather.cityName;
-    document.getElementById("city-temp").innerHTML = lastCityWeather.temp;
-    document.getElementById("city-wind").innerHTML = lastCityWeather.wind;
-    document.getElementById("city-humidity").innerHTML = lastCityWeather.humidity;
-    document.getElementById("city-uvIndex").innerHTML = lastCityWeather.uvIdnex;
-    document.getElementById("city-one-temp").innerHTML = lastCityWeather.dayOneTemp;
-    document.getElementById("city-one-wind").innerHTML = lastCityWeather.dayOneWind;
-    document.getElementById("city-one-humidity").innerHTML = lastCityWeather.dayOneHumidity;
-    document.getElementById("city-two-temp").innerHTML = lastCityWeather.dayTwoTemp;
-    document.getElementById("city-two-wind").innerHTML = lastCityWeather.dayTwoWind;
-    document.getElementById("city-two-humidity").innerHTML = lastCityWeather.dayTwoHumidity;
-    document.getElementById("city-three-temp").innerHTML = lastCityWeather.dayThreeTemp;
-    document.getElementById("city-three-wind").innerHTML = lastCityWeather.dayThreeWind;
-    document.getElementById("city-three-humidity").innerHTML = lastCityWeather.dayThreeHumidity;
-    document.getElementById("city-four-temp").innerHTML = lastCityWeather.dayFourTemp;
-    document.getElementById("city-four-wind").innerHTML = lastCityWeather.dayFourWind;
-    document.getElementById("city-four-humidity").innerHTML = lastCityWeather.dayFourHumidity;
-    document.getElementById("city-five-temp").innerHTML = lastCityWeather.dayFiveTemp;
-    document.getElementById("city-five-wind").innerHTML = lastCityWeather.dayFiveWind;
-    document.getElementById("city-five-humidity").innerHTML = lastCityWeather.dayFiveHumidity;
+    console.log("function worked")
+
+    document.getElementById("city-name").innerHTML = lastWeather.cityName;
+    document.getElementById("city-temp").innerHTML = lastWeather.temp;
+    document.getElementById("city-wind").innerHTML = lastWeather.wind;
+    document.getElementById("city-humidity").innerHTML = lastWeather.humidity;
+    document.getElementById("city-uvIndex").innerHTML = lastWeather.uvIdnex;
+    document.getElementById("city-one-temp").innerHTML = lastWeather.dayOneTemp;
+    document.getElementById("city-one-wind").innerHTML = lastWeather.dayOneWind;
+    document.getElementById("city-one-humidity").innerHTML = lastWeather.dayOneHumidity;
+    document.getElementById("city-two-temp").innerHTML = lastWeather.dayTwoTemp;
+    document.getElementById("city-two-wind").innerHTML = lastWeather.dayTwoWind;
+    document.getElementById("city-two-humidity").innerHTML = lastWeather.dayTwoHumidity;
+    document.getElementById("city-three-temp").innerHTML = lastWeather.dayThreeTemp;
+    document.getElementById("city-three-wind").innerHTML = lastWeather.dayThreeWind;
+    document.getElementById("city-three-humidity").innerHTML = lastWeather.dayThreeHumidity;
+    document.getElementById("city-four-temp").innerHTML = lastWeather.dayFourTemp;
+    document.getElementById("city-four-wind").innerHTML = lastWeather.dayFourWind;
+    document.getElementById("city-four-humidity").innerHTML = lastWeather.dayFourHumidity;
+    document.getElementById("city-five-temp").innerHTML = lastWeather.dayFiveTemp;
+    document.getElementById("city-five-wind").innerHTML = lastWeather.dayFiveWind;
+    document.getElementById("city-five-humidity").innerHTML = lastWeather.dayFiveHumidity;
 
 
   } else {
