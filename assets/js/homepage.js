@@ -70,18 +70,24 @@ var getUserRepos = function (user) {
                     wind: data.current.wind_speed,
                     humidity: data.current.humidity,
                     uvIdnex: data.current.uvi,
+                    dayOneIcon: data.daily[0].weather[0].icon,
+
                     dayOneTemp: data.daily[0].temp.day,
                     dayOneWind: data.daily[0].wind_speed,
                     dayOneHumidity: data.daily[0].humidity,
+                    dayTwoIcon: data.daily[1].weather[0].icon,
                     dayTwoTemp: data.daily[1].temp.day,
                     dayTwoWind: data.daily[1].wind_speed,
                     dayTwoHumidity: data.daily[1].humidity,
+                    dayThreeIcon: data.daily[2].weather[0].icon,
                     dayThreeTemp: data.daily[2].temp.day,
                     dayThreeWind: data.daily[2].wind_speed,
                     dayThreeHumidity: data.daily[2].humidity,
+                    dayFourIcon: data.daily[3].weather[0].icon,
                     dayFourTemp: data.daily[3].temp.day,
                     dayFourWind: data.daily[3].wind_speed,
                     dayFourHumidity: data.daily[3].humidity,
+                    dayFiveIcon: data.daily[4].weather[0].icon,
                     dayFiveTemp: data.daily[4].temp.day,
                     dayFiveWind: data.daily[4].wind_speed,
                     dayFiveHumidity: data.daily[4].humidity
@@ -98,6 +104,7 @@ var getUserRepos = function (user) {
                   displayRepos(data, user);
                   console.log("did it work")
                   // grab and use the data here
+               
               
 
                   localStorage.setItem("lastCityWeather", JSON.stringify(lastWeather));
@@ -108,6 +115,7 @@ var getUserRepos = function (user) {
                   console.log(lastWeather)
                   console.log(lastWeather.temp)
                   console.log(lastWeather.humidity)
+                  console.log(lastWeather.dayOneIcon)
                   
 
                   // putting the values on the page
@@ -135,8 +143,14 @@ var getUserRepos = function (user) {
                   document.getElementById("city-five-humidity").innerHTML = lastWeather.dayFiveHumidity;
 
                   // document.getElementById("linkImg").innerHTML =  src='http://openweathermap.org/img/w/10d.png';
+                 
 
-                  document.getElementById('linkImg').src="http://openweathermap.org/img/w/10d.png";
+                  document.getElementById('linkImg').src="http://openweathermap.org/img/w/" + lastWeather.icon + ".png";
+                  document.getElementById('linkImg-day-one').src="http://openweathermap.org/img/w/" + lastWeather.dayOneIcon + ".png";
+                  document.getElementById('linkImg-day-two').src="http://openweathermap.org/img/w/" + lastWeather.dayTwoIcon + ".png";
+                  document.getElementById('linkImg-day-three').src="http://openweathermap.org/img/w/" + lastWeather.dayThreeIcon + ".png";
+                  document.getElementById('linkImg-day-four').src="http://openweathermap.org/img/w/" + lastWeather.dayFourIcon + ".png";
+                  document.getElementById('linkImg-day-five').src="http://openweathermap.org/img/w/" + lastWeather.dayFiveIcon + ".png";
 
                  
 
