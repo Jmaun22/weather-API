@@ -134,6 +134,12 @@ var getUserRepos = function (user) {
                   document.getElementById("city-five-wind").innerHTML = lastWeather.dayFiveWind;
                   document.getElementById("city-five-humidity").innerHTML = lastWeather.dayFiveHumidity;
 
+                  // document.getElementById("linkImg").innerHTML =  src='http://openweathermap.org/img/w/10d.png';
+
+                  document.getElementById('linkImg').src="http://openweathermap.org/img/w/10d.png";
+
+                 
+
                  
                  
 
