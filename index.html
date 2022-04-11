@@ -13,8 +13,8 @@
 
 <body class="flex-column min-100-vh">
   <header class="hero">
-    <h1 class="app-title"><i class="fab fa-github"></i> Git it Done!</h1>
-    <p>Search for a GitHub user or click on a language to see a list of repositories and how many open issues they have!
+    <h1 class="app-title"><i class="fas fa-cloud"></i> Weather</h1>
+    <p>Search for the weather in your local city and see the forecast for the next five days!
     </p>
   </header>
 
@@ -23,16 +23,16 @@
     <div class="col-12 col-md-4">
 
       <div class="card">
-        <h3 class="card-header text-uppercase">Search By User</h3>
+        <h3 class="card-header text-uppercase">Search By City</h3>
         <form id="user-form" class="card-body">
-          <label class="form-label" for="username">Username</label>
+          <label class="form-label" for="username">City Name</label>
           <input name="username" id="username" type="text" autofocus="true" class="form-input" />
-          <button type="submit" class="btn">Get User</button>
+          <button type="submit" class="btn">Get City Weather</button>
         </form>
       </div>
 
       <div class="card">
-        <h3 class="card-header text-uppercase">Search By Topic</h3>
+        <h3 class="card-header text-uppercase">Search By City</h3>
         <div id="language-buttons" class="card-body">
           <button data-language="javascript" class="btn">JavaScript</button>
           <button data-language="html" class="btn">HTML</button>
@@ -60,7 +60,9 @@
       <div class="card" >
         <h3 class="card-header text-uppercase">Search By User</h3>
         <form id="user-form" class="card-body">
-          <label class="form-label" for="username">City Weather</label>
+          <label class="form-label" for="username" id="city-name">City Weather</label>
+          <h3 id="city-icon">icon</h3>
+          <img src="http://openweathermap.org/img/w/10d.png" alt="weather-icon">
           <h3 id="city-temp">temp</h3>
           <h3 id="city-humidity">humidity</h3>
           <h3 id="city-wind">wind speed</h3>
@@ -84,8 +86,8 @@
           <form id="user-form" class="card-body">
             <label class="form-label" for="username">City Weather</label>
             <h3 id="city-two-temp">temp</h3>
-            <h3 id="city-one-wind">wind</h3>
-            <h3 id="city-one-humidity">humidity</h3>
+            <h3 id="city-two-wind">wind</h3>
+            <h3 id="city-two-humidity">humidity</h3>
             <button type="submit" class="btn">Get User</button>
           </form>
         </div>

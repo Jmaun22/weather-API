@@ -65,6 +65,7 @@ var getUserRepos = function (user) {
                   var lastWeather = {
 
                     cityName: user,
+                    icon: data.current.weather[0].icon,
                     temp: data.current.temp,
                     wind: data.current.wind_speed,
                     humidity: data.current.humidity,
@@ -74,13 +75,13 @@ var getUserRepos = function (user) {
                     dayOneHumidity: data.daily[0].humidity,
                     dayTwoTemp: data.daily[1].temp.day,
                     dayTwoWind: data.daily[1].wind_speed,
-                    dyaTwoHumidity: data.daily[1].humidity,
+                    dayTwoHumidity: data.daily[1].humidity,
                     dayThreeTemp: data.daily[2].temp.day,
                     dayThreeWind: data.daily[2].wind_speed,
-                    dyaThreeHumidity: data.daily[2].humidity,
+                    dayThreeHumidity: data.daily[2].humidity,
                     dayFourTemp: data.daily[3].temp.day,
                     dayFourWind: data.daily[3].wind_speed,
-                    dyaFourHumidity: data.daily[3].humidity,
+                    dayFourHumidity: data.daily[3].humidity,
                     dayFiveTemp: data.daily[4].temp.day,
                     dayFiveWind: data.daily[4].wind_speed,
                     dayFiveHumidity: data.daily[4].humidity
@@ -111,7 +112,8 @@ var getUserRepos = function (user) {
 
                   // putting the values on the page
 
-                  // document.getElementById("city-name").innerHTML = lastWeather.cityName;
+                  document.getElementById("city-name").innerHTML = lastWeather.cityName;
+                  document.getElementById("city-icon").innerHTML = lastWeather.icon;
                   document.getElementById("city-temp").innerHTML = lastWeather.temp;
                   document.getElementById("city-wind").innerHTML = lastWeather.wind;
                   document.getElementById("city-humidity").innerHTML = lastWeather.humidity;
@@ -120,14 +122,14 @@ var getUserRepos = function (user) {
                   document.getElementById("city-one-wind").innerHTML = lastWeather.dayOneWind;
                   document.getElementById("city-one-humidity").innerHTML = lastWeather.dayOneHumidity;
                   document.getElementById("city-two-temp").innerHTML = lastWeather.dayTwoTemp;
-                  // document.getElementById("city-two-wind").innerHTML = lastWeather.dayTwoWind;
-                  // document.getElementById("city-two-humidity").innerHTML = lastWeather.dayTwoHumidity;
+                  document.getElementById("city-two-wind").innerHTML = lastWeather.dayTwoWind;
+                  document.getElementById("city-two-humidity").innerHTML = lastWeather.dayTwoHumidity;
                   document.getElementById("city-three-temp").innerHTML = lastWeather.dayThreeTemp;
                   document.getElementById("city-three-wind").innerHTML = lastWeather.dayThreeWind;
-                  // document.getElementById("city-three-humidity").innerHTML = lastWeather.dayThreeHumidity;
+                  document.getElementById("city-three-humidity").innerHTML = lastWeather.dayThreeHumidity;
                   document.getElementById("city-four-temp").innerHTML = lastWeather.dayFourTemp;
                   document.getElementById("city-four-wind").innerHTML = lastWeather.dayFourWind;
-                  // document.getElementById("city-four-humidity").innerHTML = lastWeather.dayFourHumidity;
+                  document.getElementById("city-four-humidity").innerHTML = lastWeather.dayFourHumidity;
                   document.getElementById("city-five-temp").innerHTML = lastWeather.dayFiveTemp;
                   document.getElementById("city-five-wind").innerHTML = lastWeather.dayFiveWind;
                   document.getElementById("city-five-humidity").innerHTML = lastWeather.dayFiveHumidity;
