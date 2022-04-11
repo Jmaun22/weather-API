@@ -111,36 +111,53 @@ var getUserRepos = function (user) {
                   // 
                   var lastWeather = JSON.parse(localStorage.getItem("lastCityWeather"));
 
+                  // UV idex logic favorable, moderate and severe 3-5 is moderate, lower is favoable and severe is higher
+                  var UVcolor = '';
 
-                  console.log(lastWeather)
-                  console.log(lastWeather.temp)
-                  console.log(lastWeather.humidity)
-                  console.log(lastWeather.dayOneIcon)
+                  if(lastWeather.uvIdnex < 3){
+                    UVcolor = 'background-color: green'
+
+                  } else if(lastWeather.uvIdnex > 3 && lastWeather.uvIdnex < 5) {
+                    UVcolor = 'background-color: yellow'
+
+                  } else if(lastWeather.uvIdnex > 5){
+                    UVcolor = 'background-color: red'
+                  }
+                  console.log(UVcolor)
+
+
+
                   
 
                   // putting the values on the page
 
                   document.getElementById("city-name").innerHTML = lastWeather.cityName;
                   document.getElementById("city-icon").innerHTML = lastWeather.icon;
-                  document.getElementById("city-temp").innerHTML = lastWeather.temp;
-                  document.getElementById("city-wind").innerHTML = lastWeather.wind;
-                  document.getElementById("city-humidity").innerHTML = lastWeather.humidity;
-                  document.getElementById("city-uvIndex").innerHTML = lastWeather.uvIdnex;
-                  document.getElementById("city-one-temp").innerHTML = lastWeather.dayOneTemp;
-                  document.getElementById("city-one-wind").innerHTML = lastWeather.dayOneWind;
-                  document.getElementById("city-one-humidity").innerHTML = lastWeather.dayOneHumidity;
-                  document.getElementById("city-two-temp").innerHTML = lastWeather.dayTwoTemp;
-                  document.getElementById("city-two-wind").innerHTML = lastWeather.dayTwoWind;
-                  document.getElementById("city-two-humidity").innerHTML = lastWeather.dayTwoHumidity;
-                  document.getElementById("city-three-temp").innerHTML = lastWeather.dayThreeTemp;
-                  document.getElementById("city-three-wind").innerHTML = lastWeather.dayThreeWind;
-                  document.getElementById("city-three-humidity").innerHTML = lastWeather.dayThreeHumidity;
-                  document.getElementById("city-four-temp").innerHTML = lastWeather.dayFourTemp;
-                  document.getElementById("city-four-wind").innerHTML = lastWeather.dayFourWind;
-                  document.getElementById("city-four-humidity").innerHTML = lastWeather.dayFourHumidity;
-                  document.getElementById("city-five-temp").innerHTML = lastWeather.dayFiveTemp;
-                  document.getElementById("city-five-wind").innerHTML = lastWeather.dayFiveWind;
-                  document.getElementById("city-five-humidity").innerHTML = lastWeather.dayFiveHumidity;
+                  document.getElementById("city-temp").innerHTML = "Temp: " + lastWeather.temp;
+                  document.getElementById("city-wind").innerHTML = "Wind Speed" + lastWeather.wind;
+                  document.getElementById("city-uvIndex").style = UVcolor
+
+
+
+
+
+                  document.getElementById("city-humidity").innerHTML = "Humidity" + lastWeather.humidity;
+                  document.getElementById("city-uvIndex").innerHTML = "UVIndex" + lastWeather.uvIdnex;
+                  document.getElementById("city-one-temp").innerHTML = "Temp: " + lastWeather.dayOneTemp;
+                  document.getElementById("city-one-wind").innerHTML = "Wind Speed" + lastWeather.dayOneWind;
+                  document.getElementById("city-one-humidity").innerHTML = "Humidity" + lastWeather.dayOneHumidity;
+                  document.getElementById("city-two-temp").innerHTML = "Temp: " + lastWeather.dayTwoTemp;
+                  document.getElementById("city-two-wind").innerHTML = "Wind Speed" + lastWeather.dayTwoWind;
+                  document.getElementById("city-two-humidity").innerHTML = "Humidity" + lastWeather.dayTwoHumidity;
+                  document.getElementById("city-three-temp").innerHTML = "Temp" + lastWeather.dayThreeTemp;
+                  document.getElementById("city-three-wind").innerHTML = "Wind Speed" + lastWeather.dayThreeWind;
+                  document.getElementById("city-three-humidity").innerHTML = "Humidity" + lastWeather.dayThreeHumidity;
+                  document.getElementById("city-four-temp").innerHTML = "Temp" + lastWeather.dayFourTemp;
+                  document.getElementById("city-four-wind").innerHTML = "WindSpeed: " + lastWeather.dayFourWind;
+                  document.getElementById("city-four-humidity").innerHTML = "Humidity" + lastWeather.dayFourHumidity;
+                  document.getElementById("city-five-temp").innerHTML = "Temp: " + lastWeather.dayFiveTemp;
+                  document.getElementById("city-five-wind").innerHTML = "Wind Speed: " + lastWeather.dayFiveWind;
+                  document.getElementById("city-five-humidity").innerHTML = "Humidity: " + lastWeather.dayFiveHumidity;
 
                   // document.getElementById("linkImg").innerHTML =  src='http://openweathermap.org/img/w/10d.png';
                  
@@ -187,36 +204,26 @@ document.getElementById("city-temp").innerHTML = "just work please";
 
 function renderLastWeather() {
 
+  localStorage.setItem("lastCityWeather", JSON.stringify(lastWeather));
+  // 
   var lastWeather = JSON.parse(localStorage.getItem("lastCityWeather"));
 
   console.log(lastWeather)
   if(lastWeather !== null) {
 
-    console.log("function worked")
+   
 
-    document.getElementById("city-name").innerHTML = lastWeather.cityName;
-    document.getElementById("city-temp").innerHTML = lastWeather.temp;
-    document.getElementById("city-wind").innerHTML = lastWeather.wind;
-    document.getElementById("city-humidity").innerHTML = lastWeather.humidity;
-    document.getElementById("city-uvIndex").innerHTML = lastWeather.uvIdnex;
-    document.getElementById("city-one-temp").innerHTML = lastWeather.dayOneTemp;
-    document.getElementById("city-one-wind").innerHTML = lastWeather.dayOneWind;
-    document.getElementById("city-one-humidity").innerHTML = lastWeather.dayOneHumidity;
-    document.getElementById("city-two-temp").innerHTML = lastWeather.dayTwoTemp;
-    document.getElementById("city-two-wind").innerHTML = lastWeather.dayTwoWind;
-    document.getElementById("city-two-humidity").innerHTML = lastWeather.dayTwoHumidity;
-    document.getElementById("city-three-temp").innerHTML = lastWeather.dayThreeTemp;
-    document.getElementById("city-three-wind").innerHTML = lastWeather.dayThreeWind;
-    document.getElementById("city-three-humidity").innerHTML = lastWeather.dayThreeHumidity;
-    document.getElementById("city-four-temp").innerHTML = lastWeather.dayFourTemp;
-    document.getElementById("city-four-wind").innerHTML = lastWeather.dayFourWind;
-    document.getElementById("city-four-humidity").innerHTML = lastWeather.dayFourHumidity;
-    document.getElementById("city-five-temp").innerHTML = lastWeather.dayFiveTemp;
-    document.getElementById("city-five-wind").innerHTML = lastWeather.dayFiveWind;
-    document.getElementById("city-five-humidity").innerHTML = lastWeather.dayFiveHumidity;
+
+
 
 
   } else {
+
+
+
+
+
+
     return;
   }
 }
