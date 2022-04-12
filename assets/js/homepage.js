@@ -199,6 +199,20 @@ var getUserRepos = function (user) {
                   document.getElementById('linkImg-day-four').src="http://openweathermap.org/img/w/" + lastWeather.dayFourIcon + ".png";
                   document.getElementById('linkImg-day-five').src="http://openweathermap.org/img/w/" + lastWeather.dayFiveIcon + ".png";
 
+                  // save city to search 
+                  
+
+                  /* -------------------------------------------------------------------------- */
+                  const btn = document.createElement('button');
+                  btn.innerText = lastWeather.cityName;
+                  btn.classList.add('btn');
+                 
+                  var addButton = document.querySelector('#language-buttons');
+
+                  addButton.appendChild(btn);
+
+
+
                  
 
                  
@@ -226,38 +240,17 @@ var getUserRepos = function (user) {
 
 // get item out of storgae
 languageButtonsEl.addEventListener('click', buttonClickHandler);
-refreshButton.addEventListener('click', renderLastWeather)
+
 document.getElementById("city-temp").innerHTML = "just work please";
 
 
 
 
-function renderLastWeather() {
-
-  localStorage.setItem("lastCityWeather", JSON.stringify(lastWeather));
-  // 
-  var lastWeather = JSON.parse(localStorage.getItem("lastCityWeather"));
-
-  console.log(lastWeather)
-  if(lastWeather !== null) {
-
-   
+/* -------------------------------------------------------------------------- */
 
 
 
-
-
-  } else {
-
-
-
-
-
-
-    return;
-  }
-}
-
+/* -------------------------------------------------------------------------- */
 
 
 
