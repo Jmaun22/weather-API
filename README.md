@@ -9,6 +9,7 @@ Use the [OpenWeather One Call API](https://openweathermap.org/api/one-call-api) 
 ## Screen Shots of Website
 
 ![img1](https://github.com/Jmaun22/weather-API/blob/9940e9a7f17e4cdfd9351cc2ba5408ae0b9e6ec6/Screen%20Shot%202022-04-11%20at%208.36.28%20PM.png)
+![img2](https://github.com/Jmaun22/weather-API/blob/16d24aa40219cd850a94f24bc1c0e0e21f88879d/Screen%20Shot%202022-04-11%20at%208.36.44%20PM.png)
 
 ## link to live website
 
